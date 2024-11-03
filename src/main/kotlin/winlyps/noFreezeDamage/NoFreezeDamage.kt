@@ -14,6 +14,9 @@ class NoFreezeDamage : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoFreezeDamage plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("freezeDamage", "true")
+            logger.info("NoFreezeDamage plugin has been disabled.")
+        }
     }
 }
